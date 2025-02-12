@@ -3,6 +3,7 @@ package robot;
 import static edu.wpi.first.units.Units.Seconds;
 import static robot.Constants.PERIOD;
 
+import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.wpilibj.DataLogManager;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
@@ -19,6 +20,7 @@ import monologue.Logged;
 import monologue.Monologue;
 import org.littletonrobotics.urcl.URCL;
 import robot.Ports.OI;
+import robot.drive.Drive;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -34,6 +36,7 @@ public class Robot extends CommandRobot implements Logged {
   private final PowerDistribution pdh = new PowerDistribution();
 
   // SUBSYSTEMS
+  Drive drive = new Drive();
 
   // COMMANDS
 
