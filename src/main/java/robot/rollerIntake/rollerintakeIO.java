@@ -1,5 +1,11 @@
 package robot.rollerIntake;
 
-public class rollerintakeIO {
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkLowLevel.MotorType;
+
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import robot.Ports;
+
+public interface rollerintakeIO {
     
 }
