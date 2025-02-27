@@ -9,6 +9,9 @@ import java.util.function.DoubleSupplier;
 import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -26,9 +29,11 @@ public class Drive extends SubsystemBase {
 
     private final AnalogGyro gyro = new AnalogGyro(Ports.Drive.GYRO_CHANNEL);
 
+    private final DifferentialDriveOdometry odometry;
+
     public Drive() {
         for (CANSparkMax spark : List.of(leftLeader, leftFollower, rightLeader, rightFollower)) {
-	        spark.restoreFactoryDefaults();
+            spark.restoreFactoryDefaults();
             spark.setIdleMode(IdleMode.kBrake);
         }
 
@@ -47,6 +52,13 @@ public class Drive extends SubsystemBase {
         rightEncoder.setPosition(0);
 
         gyro.reset();
+
+        odometry = new DifferentialDriveOdometry(
+            gyro.getRotation2d(), 
+            leftEncoder.getPosition(), 
+            rightEncoder.getPosition(), 
+            new Pose2d()
+        );
     }
 
     private void drive(double leftSpeed, double rightSpeed) {
@@ -56,5 +68,24 @@ public class Drive extends SubsystemBase {
 
     public Command drive(DoubleSupplier vLeft, DoubleSupplier vRight){
         return run(() -> drive(vLeft.getAsDouble(), vRight.getAsDouble()));
+    }
+
+    private void updateOdometry(Rotation2d rotation) {
+        odometry.update(rotation, leftEncoder.getPosition(), rightEncoder.getPosition());
+    }
+
+    public void resetOdometry(Pose2d pose) {
+        leftEncoder.setPosition(0);
+        rightEncoder.setPosition(0);
+        odometry.resetPosition(gyro.getRotation2d(), 0, 0, pose);
+    }
+
+    @Override 
+    public void periodic() {
+        updateOdometry(gyro.getRotation2d());
+    }
+
+    public Pose2d pose() {
+        return odometry.getPoseMeters();
     }
 }
