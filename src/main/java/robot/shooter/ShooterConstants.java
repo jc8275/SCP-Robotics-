@@ -14,16 +14,16 @@ public class ShooterConstants {
     public static final double SHOOTER_OPERATING_SPEED = 0.80;  
 
     // Max and Min speed for the shooter motor (to avoid over-revving or under-performing)
-    public static final double MAX_SHOOTER_SPEED = 1.0;  // 
-    public static final double MIN_SHOOTER_SPEED = 0.2;  // 
+    public static final double MAX_SHOOTER_SPEED = 1.0;  
+    public static final double MIN_SHOOTER_SPEED = 0.2;  
 
     // Shooter wheel specifications
-    public static final double SHOOTER_WHEEL_DIAMETER = 4.0; // 
-    public static final double SHOOTER_WHEEL_RPM = 2650;  // s
+    public static final double SHOOTER_WHEEL_DIAMETER = 4.0; 
+    public static final double SHOOTER_WHEEL_RPM = 2650;  
 
     // Shooter control constants
-    public static final double SHOOTER_SPEED_TOLERANCE = 0.05;  // 
+    public static final double SHOOTER_SPEED_TOLERANCE = 0.05;  
 
     // Adjustments for aiming or feed system can be added as needed
-    public static final double FEED_WHEEL_SPEED = 0.5;  // Speed for feeding mechanism (could vary based on ball type/size)
+    public static final double FEED_WHEEL_SPEED = 0.5;  
 }
