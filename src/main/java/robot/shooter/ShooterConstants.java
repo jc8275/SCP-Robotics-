@@ -19,7 +19,7 @@ public class ShooterConstants {
 
     // Shooter wheel specifications
     public static final double SHOOTER_WHEEL_DIAMETER = 4.0; // 
-    public static final double SHOOTER_WHEEL_RPM = 5000;  // s
+    public static final double SHOOTER_WHEEL_RPM = 2650;  // s
 
     // Shooter control constants
     public static final double SHOOTER_SPEED_TOLERANCE = 0.05;  // 
