@@ -6,6 +6,7 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import robot.Ports;
 
-public interface rollerintakeIO {
-    
+public interface rollerIntakeIO {
+    /**manages power of the intake**/
+    void setPower(double power);
 }

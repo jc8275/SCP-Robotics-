@@ -6,6 +6,8 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import robot.Ports;
 
-public class Norollerintake implements rollerintakeIO{
-    
+public class RealRollerIntake implements rollerIntakeIO{
+    public void setPower(double power){
+
+    }
 }
