@@ -5,7 +5,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 public class ShooterConstants {
     public static final int SHOOTER_MOTOR_PORT = 0;  
 
-    public static final motorType SHOOTER_MOTOR_TYPE = 0; 
+    // public static final motorType SHOOTER_MOTOR_TYPE = 0; i dont think we need this
 
     public static final double SHOOTER_IDLE_SPEED = 0.0;  
     public static final double SHOOTER_OPERATING_SPEED = 0.0;  
