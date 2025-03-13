@@ -7,33 +7,26 @@ import edu.wpi.first.units.Time;
 
 
 
-WHEEL_RADIUS = 0.05  # Radius of the wheel in meters
-WHEEL_BASE = 0.15    # Distance between the left and right wheels (wheelbase) in meters
-ARM_LENGTH = 0.3     # Length of the robotic arm (if applicable), in meters
-MAX_TILT_ANGLE = 90  # Maximum tilt angle of the arm or robot in degrees
+public static final double WHEEL_RADIUS = 0.05;
+    public static final double WHEEL_BASE = 0.15;
+    public static final double ARM_LENGTH = 0.3;
+    public static final int MAX_TILT_ANGLE = 90;
 
+    public static final double MAX_MOTOR_SPEED = 1.0;
+    public static final double MIN_MOTOR_SPEED = 0.1;
+    public static final int MOTOR_PWM_MAX = 255;
+    public static final int MOTOR_PWM_MIN = 50;
 
-MAX_MOTOR_SPEED = 1.0  # Maximum motor speed (in meters per second or relevant units)
-MIN_MOTOR_SPEED = 0.1  # Minimum motor speed (in meters per second or relevant units)
-MOTOR_PWM_MAX = 255    # Max PWM signal for motors (if using PWM control)
-MOTOR_PWM_MIN = 50     # Min PWM signal for motors (if using PWM control)
+    public static final double MAX_BATTERY_VOLTAGE = 12.0;
+    public static final double MIN_BATTERY_VOLTAGE = 10.5;
 
+    public static final String SERIAL_PORT = "";
+    public static final int SERIAL_BAUD_RATE = 115200;
+    public static final String NETWORK_IP = "192.168.0.1";
+    public static final int NETWORK_PORT = 8080;
 
-
-MAX_BATTERY_VOLTAGE = 12.0  # Max battery voltage in volts (for monitoring battery levels)
-MIN_BATTERY_VOLTAGE = 10.5  # Min battery voltage in volts (for triggering warnings)
-
-
-
-SERIAL_PORT =    # Serial port for communication with the robot (example)
-SERIAL_BAUD_RATE = 115200       # Baud rate for serial communication
-NETWORK_IP = "192.168.0.1"      # IP address for network communication
-NETWORK_PORT = 8080             # Port for communication (e.g., for a web server or socket)
-
-
-TIMEOUT_LIMIT = 5.0  # Timeout limit in seconds (e.g., waiting for sensor data)
-LOOP_DELAY = 0.1     # Delay between control loop iterations (in seconds)
-
+    public static final double TIMEOUT_LIMIT = 5.0;
+    public static final double LOOP_DELAY = 0.
 
 
 public class Constants {
