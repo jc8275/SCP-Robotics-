@@ -10,7 +10,9 @@ public interface hopperIO {
 
 public interface Elevator {
     void setVoltage(int voltage);
+    void getVoltage(int voltage);
 }
+  
 
 
   
