@@ -12,5 +12,6 @@ public interface Elevator {
     void setVoltage(int voltage);
 }
 
+
   
 }
