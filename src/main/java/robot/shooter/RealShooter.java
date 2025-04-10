@@ -1,25 +1,24 @@
 package robot.shooter;
 
-
 public class RealShooter implements ShooterIO {
-    private final MotorController shooterMotor;  // Replace with actual motor controller class
-
-    public RealShooter() {
-        shooterMotor = new MotorController(ShooterConstants.SHOOTER_MOTOR_ID); // Example motor init
-    }
+    private double power = 0;
 
     @Override
     public void setVoltage(double voltage) {
-        shooterMotor.setVoltage(voltage);
+        // In real life, send voltage to motor
+        System.out.println("RealShooter: Setting voltage to " + voltage);
     }
 
     @Override
     public void setPower(double power) {
-        shooterMotor.set(power);
+        this.power = power;
+        System.out.println("RealShooter: Setting power to " + power);
     }
 
     @Override
     public double getVelocity() {
-        return shooterMotor.getVelocity();  // Replace with actual motor velocity method
+       
+        return power * 100; 
     }
 }
+
