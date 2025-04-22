@@ -23,7 +23,7 @@ import lib.FaultLogger;
 import monologue.Logged;
 import monologue.Monologue;
 import robot.Ports.OI;
-import robot.drive.Drive;
+import robot.drive.drive;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -45,7 +45,7 @@ public class Robot extends CommandRobot implements Logged {
     0, 
     new Pose2d()
   );
-  Drive drive = new Drive();
+  drive drive = new drive();
 
   // COMMANDS
 
