@@ -14,14 +14,14 @@ public class RollerIntake extends SubsystemBase{
         this.intakeMotor = new CANSparkMax(1, MotorType.kBrushed);
     }
     
-    public void intake(double speed){
+    public void intake(){
         intakeMotor.set(RollerIntakeConstants.ROLLER_INTAKE_SPEED);
     }
-    public void stop(double speed){
+    public void stop(){
         intakeMotor.set(RollerIntakeConstants.ROLLER_INTAKE_STOP);
     }
-    public void reverse(double speed){
-        intakeMotor.set(RollerIntakeConstants.ROLLER_INTAKE_REVERSE_SPEED);
+    public void reverse(){
+        intakeMotor.set(RollerIntakeConstants.ROLLER_INTAKE_REVERSE_SPEED); // removed double speed, we can set up speed frame later
     }
     
 }
