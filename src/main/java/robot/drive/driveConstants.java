@@ -21,7 +21,9 @@ public class driveConstants {
     public static final double POSITION_FACTOR = CIRCUMFERENCE * GEARING;
     public static final double VELOCITY_FACTOR = POSITION_FACTOR / 60.0;
     public static final double MOI = 7.5;
-    
+
+    public static final double PERIOD = 0.2;
+
     // Drive Mass in Kg
     public static final double DRIVE_MASS = 60.0; 
     public static final Matrix<N7, N1> STD_DEVS = VecBuilder.fill(0, 0, 0, 0, 0, 0, 0);

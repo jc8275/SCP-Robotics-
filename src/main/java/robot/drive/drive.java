@@ -3,6 +3,8 @@ package robot.drive;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 
+import static edu.wpi.first.units.Units.Second;
+
 import java.util.List;
 import java.util.function.DoubleSupplier;
 
@@ -15,13 +17,15 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.math.system.plant.DCMotor;
+import edu.wpi.first.units.Time;
+import edu.wpi.first.units.Unit;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.simulation.DifferentialDrivetrainSim;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import robot.Constants;
 import robot.Ports;
 import robot.Robot;
-import robot.drive.driveConstants;
 import robot.drive.driveConstants.FF;
 import robot.drive.driveConstants.PID;
 
@@ -129,6 +133,14 @@ public class drive extends SubsystemBase {
     @Override 
     public void periodic() {
         updateOdometry(Robot.isReal() ? gyro.getRotation2d() :  driveSim.getHeading());
+    }
+
+    @Override
+    public void simulationPeriodic() {
+        // sim.update() tells the simulation how much time has passed
+        driveSim.update(Constants.PERIOD.in(Second));
+        leftEncoder.setPosition(driveSim.getLeftPositionMeters());
+        rightEncoder.setPosition(driveSim.getRightPositionMeters());
     }
 
     public Pose2d pose() {
