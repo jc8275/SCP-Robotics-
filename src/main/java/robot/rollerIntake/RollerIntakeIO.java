@@ -1,10 +1,6 @@
 package robot.rollerIntake;
 
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkLowLevel.MotorType;
-
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import robot.Ports;
+// again pretty unnecessary
 
 public interface RollerIntakeIO {
     /**manages power of the intake**/

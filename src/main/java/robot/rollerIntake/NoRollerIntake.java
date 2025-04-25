@@ -1,12 +1,8 @@
 package robot.rollerIntake;
 
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkLowLevel.MotorType;
+//cleared up the unused imports
 
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import robot.Ports;
-
-public class NoRollerIntake implements rollerIntakeIO{
+public class NoRollerIntake implements RollerIntakeIO{
     public void setPower(double power){
     
     
