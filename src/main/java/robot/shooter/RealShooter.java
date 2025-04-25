@@ -17,8 +17,7 @@ public class RealShooter implements ShooterIO {
 
     @Override
     public double getVelocity() {
-       
-        return power * 100; 
+       return power * 100; 
     }
 }
 

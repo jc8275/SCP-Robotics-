@@ -11,16 +11,7 @@ public class motorSubsystem extends SubsystemBase {
         motor = new CANSparkMax(canId, motorType);
     }
 
-    public void setSpeed(double speed) {
-        motor.set(speed);
-    }
- 
-    public void stop() {
-        motor.stopMotor();
-    }
-
-    @Override
-    public void periodic() {
-       
+    public void motorRun() {
+        motor.set(ShooterConstants.SPEED);
     }
 }

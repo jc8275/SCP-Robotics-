@@ -21,10 +21,10 @@ public final class Ports {
     public static final int LEFT_FOLLOWER = 4;
 
     public static final int GYRO_CHANNEL = 1;
+  }
 
-  
-    
-
+  public static final class Shooter {
+    public static final int SHOOTER_ONE = 1;
   }
 }
 

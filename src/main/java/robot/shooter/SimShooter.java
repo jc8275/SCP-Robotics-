@@ -1,6 +1,5 @@
 package robot.shooter;
 
-
 public class SimShooter implements ShooterIO {
     private double velocity = 0;  
 
