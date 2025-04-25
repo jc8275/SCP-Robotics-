@@ -2,12 +2,9 @@ package robot.shooter;
 
 
 public interface ShooterIO {
-    /** Sets the shooter motor voltage. */
     void setVoltage(double voltage);
     
-    /** Sets the shooter motor power. */
-    void setPower(double power);
+    void setPower(double power); // -1 to 1
     
-    /** Gets the current shooter velocity (RPM). */
     double getVelocity();
 }

@@ -23,6 +23,5 @@ public class RollerIntake extends SubsystemBase{
     public void reverse(){
         intakeMotor.set(RollerIntakeConstants.ROLLER_INTAKE_REVERSE_SPEED); // removed double speed, we can set up speed frame later
     }
-    
 }
 

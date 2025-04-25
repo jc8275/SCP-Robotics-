@@ -7,6 +7,6 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import robot.Ports;
 import robot.hopper.AConstants;
 
-public class hopper extends SubsystemBase{
+public class Hopper extends SubsystemBase{
     private final CANSparkMax indexMotor;
 }
