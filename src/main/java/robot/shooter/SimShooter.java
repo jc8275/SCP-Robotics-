@@ -16,7 +16,7 @@ public class SimShooter implements ShooterIO {
         return speedCurrent;
     }
     @Override 
-    public void shooterStop(){
+    public void stopShooter(){
         speedCurrent = ShooterConstants.SPEED_MIN;
     System.out.println("the shooter stopped");
     }

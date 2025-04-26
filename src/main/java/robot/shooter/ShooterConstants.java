@@ -3,6 +3,7 @@ package robot.shooter;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 public class ShooterConstants {
+    public static final int SHOOTER_MOTOR_ID = 1; // a mentor said to have this for each motor
     public static final double SPEED_MAX = 4; //erm, we dont know the values for these yet D: so i just put random stuff ig???
     public static final double SPEED_MIN = 0; //like, how weak it can possibly be
     public static final double SPEED_TARGET = 2; //like, I think we need to choose how quickly we want to shoot or balls.TARGET is the range we want our shooting-speed to be in. Sort of like the arm in that one video they showed us?
