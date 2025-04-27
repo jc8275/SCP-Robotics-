@@ -3,6 +3,9 @@ package robot.shooter;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 public class ShooterConstants {
+    public static final double SPEED = 0.8;
+
+    // what is all this stuff below? vv
     public static final int SHOOTER_MOTOR_ID = 1; // a mentor said to have this for each motor
     public static final double SPEED_MAX = 4; //erm, we dont know the values for these yet D: so i just put random stuff ig???
     public static final double SPEED_MIN = 0; //like, how weak it can possibly be

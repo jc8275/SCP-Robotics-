@@ -8,6 +8,7 @@ public interface ShooterIO {
     
     void setPower(double power); // -1 to 1
     
+    // ???
     double getVelocity();
     double getVoltage();
     double getSpeed();
