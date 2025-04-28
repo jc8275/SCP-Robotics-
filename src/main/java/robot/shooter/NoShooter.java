@@ -7,11 +7,6 @@ public class NoShooter implements ShooterIO {
     }
 
     @Override
-    public void setPower(double power) {
-
-    }
-
-    @Override
     public double getVelocity() {
         return 0;  
     }
