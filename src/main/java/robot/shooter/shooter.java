@@ -28,18 +28,19 @@ import robot.Ports;
 import robot.Robot;
 
 public class shooter extends SubsystemBase {
-    private final CANSparkMax motor = new CANSparkMax(Ports.Shooter.SHOOTER_ONE, MotorType.kBrushless);
+    // private final CANSparkMax motor = new CANSparkMax(Ports.Shooter.SHOOTER_ONE, MotorType.kBrushless);
+    private final ShooterIO hardware;
 
-    public shooter() {
-        motor.restoreFactoryDefaults();
+    public shooter(ShooterIO hardware) {
+        this.hardware = hardware;
     }
 
     public Command run() {
-        return run(() -> motor.set(ShooterConstants.SPEED));
+        return run(() -> hardware.setVoltage(ShooterConstants.VOLTAGE));
     }
 
     public Command stop() {
-        return run(() -> motor.set(0));
+        return run(() -> hardware.setVoltage(0));
     }
 }
 
