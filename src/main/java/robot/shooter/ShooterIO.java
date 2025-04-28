@@ -8,7 +8,7 @@ public interface ShooterIO {
     
     void setPower(double power); // -1 to 1
     
-    // ???
+    // these are to stop errors because all functions need to root from shooterIO (according 2 quickfix)-> ???
     double getVelocity();
     double getVoltage();
     double getSpeed();
