@@ -8,9 +8,9 @@ import robot.Ports;
 
 public class NoHopper {
    public void setVoltage(double voltage) {
-        elevatorMotor.setVoltage(voltage)
+        elevatorMotor.setVoltage(voltage);
     }
     public void getVoltage(double voltage) {
-    return elevatorMotor.getVoltage
+    return elevatorMotor.getVoltage;
     }
 }
