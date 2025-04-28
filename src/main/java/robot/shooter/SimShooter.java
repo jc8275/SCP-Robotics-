@@ -7,12 +7,12 @@ public class SimShooter implements ShooterIO {
 //Ok so i'm guessing this "simShooter" is tryna simulate values? So we would want it to say all the values to make sure we have them all
 //getting simulated values for speed
     @Override
-    public void setShooterSpeed(double speed) {
+    public void setSpeed(double speed) {
         speedCurrent = speed;
     System.out.println("shooter speed is " +speedCurrent);
     }
     @Override
-    public double getShooterSpeed(){
+    public double getSpeed(){
         return speedCurrent;
     }
     @Override 
@@ -27,6 +27,7 @@ public class SimShooter implements ShooterIO {
     System.out.println("this is the voltage "+voltage);
     }
     @Override
+    
     public double getVoltage(){
         return voltage;
 }

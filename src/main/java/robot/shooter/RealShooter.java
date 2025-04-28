@@ -11,9 +11,14 @@ public class RealShooter implements ShooterIO {
         shooterMotor = new CANSparkMax(ShooterConstants.SHOOTER_MOTOR_ID, MotorType.kBrushed); //OK, so we're gonna have to fix the motor type cuz i just put some random "kbrushed" there. no idea what that means
     }
     @Override
-    public double getShooterSpeed(){ //gets velocity of our motor's encoder
+    public double getSpeed(){ //gets velocity of our motor's encoder
         return shooterMotor.getEncoder().getVelocity();
        }
+    @Override
+    public void setSpeed(double speed){
+        this.speed=speed;
+        ((ShooterIO)shooterMotor).setSpeed(this.speed);
+    }
     @Override
     public void stopShooter(){
         shooterMotor.set(0);//self explanitory
