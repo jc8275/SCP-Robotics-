@@ -1,7 +1,5 @@
 package robot;
 
-import edu.wpi.first.wpilibj.AnalogGyro;
-
 public final class Ports {
   // TODO: Add and change all ports as needed.
   public static final class OI {
@@ -24,13 +22,19 @@ public final class Ports {
   }
 
   public static final class Shooter {
-    public static final int SHOOTER_ONE = 1;
-  }
+    public static final int SHOOTER_ONE = 1; // replace with the id for the robot later 
+    }
+
+  
+    
+
+  
 
   public static final class Hopper {
     public static final int HOPPER_TOP = 1;
     public static final int HOPPER_BOTTOM = 2;
   }
 }
+
 
 
