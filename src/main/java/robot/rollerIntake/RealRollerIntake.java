@@ -14,13 +14,13 @@ public class RealRollerIntake implements RollerIntakeIO{
 
     @Override 
     public void setVoltage(double voltage){// just gives us the voltage
-        shooterMotor.setVoltage(voltage);
+        hopperMotor.setVoltage(voltage);
     }
     @Override
-    public double getVelocity() {
-        shooterMotor.getVelocity();
+    public double getVoltage() {
+        return hopperMotor.getBusVoltage();
     }
 }
-}
+
 
 

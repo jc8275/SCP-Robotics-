@@ -3,7 +3,11 @@ package robot.rollerIntake;
 //cleared up the unused imports
 
 public class NoRollerIntake implements RollerIntakeIO{
-    public void setPower(double power){
 
+    public double getVoltage(){
+        return 0;
+    }
+    public void setVoltage(double voltage){
+        
     }
 }

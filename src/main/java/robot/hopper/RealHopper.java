@@ -11,8 +11,8 @@ public class RealHopper implements HopperIO {
     private final CANSparkMax hopperBottom;
 
     public RealHopper() {
-        hopperTop = new CANSparkMax(Ports.Hopper.HOPPER_TOP);
-        hopperBottom = new CANSparkMax(Ports.Hopper.HOPPER_BOTTOM);
+        hopperTop = new CANSparkMax(Ports.Hopper.HOPPER_TOP, MotorType.kBrushless);
+        hopperBottom = new CANSparkMax(Ports.Hopper.HOPPER_BOTTOM, MotorType.kBrushless);
 
         hopperBottom.follow(hopperTop);
         hopperBottom.setInverted(true);
@@ -23,7 +23,8 @@ public class RealHopper implements HopperIO {
         
     }
     @Override
-    public void getVoltage(double voltage) {
+    public double getVoltage() {
+        return hopperTop.getBusVoltage();
         
     }
 }
