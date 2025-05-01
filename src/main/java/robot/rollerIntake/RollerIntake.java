@@ -1,27 +1,48 @@
 package robot.rollerIntake;
 
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.RelativeEncoder;
+
+import static edu.wpi.first.units.Units.Second;
+
+import java.util.List;
+import java.util.function.DoubleSupplier;
+
+import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
+import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.math.controller.SimpleMotorFeedforward;
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
+import edu.wpi.first.math.system.plant.DCMotor;
+import edu.wpi.first.units.Time;
+import edu.wpi.first.units.Unit;
+import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.simulation.DifferentialDrivetrainSim;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-// i am not sure why it says this import is not being used, it should be 
-import robot.rollerIntake.RollerIntakeConstants;
+import robot.Constants;
+import robot.Ports;
+import robot.Robot;
 
-public class RollerIntake extends SubsystemBase{
-    private final CANSparkMax intakeMotor;
+public class RollerIntake extends SubsystemBase {
+    private final RollerIntakeIO hardware;
 
-    public RollerIntake() {
-        this.intakeMotor = new CANSparkMax(1, MotorType.kBrushed);
+    public RollerIntake(RollerIntakeIO hardware) {
+        this.hardware = hardware;
     }
-    
-    public void intake(){
-        intakeMotor.set(RollerIntakeConstants.ROLLER_INTAKE_SPEED);
+
+    public Command run_forwards() {
+        return run(() -> hardware.setVoltage(RollerIntakeConstants.VOLTAGE));
     }
-    public void stop(){
-        intakeMotor.set(RollerIntakeConstants.ROLLER_INTAKE_STOP);
+
+    public Command run_backwards() {
+        return run(() -> hardware.setVoltage(-RollerIntakeConstants.VOLTAGE));
     }
-    public void reverse(){
-        intakeMotor.set(RollerIntakeConstants.ROLLER_INTAKE_REVERSE_SPEED); // removed double speed, we can set up speed frame later
+
+    public Command stop() {
+        return run(() -> hardware.setVoltage(0));
     }
 }
-

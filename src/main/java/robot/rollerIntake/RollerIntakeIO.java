@@ -4,5 +4,6 @@ package robot.rollerIntake;
 
 public interface RollerIntakeIO {
     /**manages power of the intake**/
-    void setPower(double power);
+    void setVoltage(double voltage);
+    double getVoltage();
 }

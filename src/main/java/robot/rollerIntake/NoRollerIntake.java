@@ -4,7 +4,6 @@ package robot.rollerIntake;
 
 public class NoRollerIntake implements RollerIntakeIO{
     public void setPower(double power){
-    
-    
+
     }
 }
