@@ -1,3 +1,4 @@
+
 package robot.shooter;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType; 
@@ -17,5 +18,3 @@ public class RealShooter implements ShooterIO {
         shooterMotor.getVelocity();
     }
 }
-
-
