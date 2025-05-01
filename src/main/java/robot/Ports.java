@@ -26,6 +26,11 @@ public final class Ports {
   public static final class Shooter {
     public static final int SHOOTER_ONE = 1;
   }
+
+  public static final class Hopper {
+    public static final int HOPPER_TOP = 1;
+    public static final int HOPPER_BOTTOM = 2;
+  }
 }
 
 
