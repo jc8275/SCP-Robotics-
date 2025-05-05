@@ -1,9 +1,8 @@
 package robot.hopper;
 
-import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkLowLevel.MotorType;
+import com.revrobotics.CANSparkMax;
 
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import robot.Ports;
 
 public class RealHopper implements HopperIO {
@@ -20,7 +19,7 @@ public class RealHopper implements HopperIO {
 
     @Override 
     public void setVoltage(double voltage) {
-        
+        hopperTop.setVoltage(voltage);
     }
     @Override
     public double getVoltage() {
