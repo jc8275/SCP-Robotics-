@@ -10,4 +10,10 @@ public class NoShooter implements ShooterIO {
     public double getVelocity() {
         return 0;  
     }
+
+    @Override
+    public double getVoltage() {
+        // TODO method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getVoltage'");
+    }
 }

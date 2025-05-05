@@ -31,6 +31,7 @@ import robot.drive.Drive;
  * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
  * subsystems, commands, and trigger mappings) should be declared here.
  */
+@SuppressWarnings("unused")
 public class Robot extends CommandRobot implements Logged {
   // INPUT DEVICES
   private final CommandXboxController operator = new CommandXboxController(OI.OPERATOR);
@@ -39,12 +40,6 @@ public class Robot extends CommandRobot implements Logged {
   private final PowerDistribution pdh = new PowerDistribution();
 
   // SUBSYSTEMS
-  private final DifferentialDriveOdometry odometry = new DifferentialDriveOdometry(
-    new Rotation2d(), 
-    0, 
-    0, 
-    new Pose2d()
-  );
   Drive drive = new Drive();
 
   // COMMANDS

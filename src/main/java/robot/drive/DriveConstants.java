@@ -1,16 +1,11 @@
 package robot.drive;
 
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkLowLevel.MotorType;
-
 import edu.wpi.first.math.Matrix;
 import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.numbers.N1;
 import edu.wpi.first.math.numbers.N7;
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import robot.Ports;
 
-public class driveConstants {
+public class DriveConstants {
     // Track Width in meters
     public static final double TRACK_WIDTH = 0.7112; 
     // Radius of the wheel in meters

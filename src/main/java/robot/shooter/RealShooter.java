@@ -1,7 +1,9 @@
 
 package robot.shooter;
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType; 
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import robot.Ports;
+
 public class RealShooter implements ShooterIO {
     private final CANSparkMax shooterMotor; //we need our motor, ofc
 
@@ -15,6 +17,12 @@ public class RealShooter implements ShooterIO {
     }
     @Override
     public double getVelocity() {
-        shooterMotor.getVelocity();
+        return shooterMotor.getEncoder().getVelocity();
+    }
+
+    @Override
+    public double getVoltage() {
+        // TODO Method Stud
+        throw new UnsupportedOperationException("Unimplemented method 'getVoltage'");
     }
 }

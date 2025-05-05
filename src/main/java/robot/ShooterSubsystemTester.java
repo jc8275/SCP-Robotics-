@@ -1,13 +1,13 @@
-package frc.robot.subsystems;
+package robot;
 
 import edu.wpi.first.wpilibj.Timer;
-import frc.robot.subsystems.shooter.ShooterSubsystem;
+import robot.shooter.Shooter;
 
 public class ShooterSubsystemTester {
 
-    private ShooterSubsystem m_shooterSubsystem;
+    private Shooter m_shooterSubsystem;
 
-    public ShooterSubsystemTester(ShooterSubsystem shooterSubsystem) {
+    public ShooterSubsystemTester(Shooter shooterSubsystem) {
         this.m_shooterSubsystem = shooterSubsystem;
     }
 

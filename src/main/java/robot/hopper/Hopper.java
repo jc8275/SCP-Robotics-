@@ -1,4 +1,4 @@
-package robot.shooter;
+package robot.hopper;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
@@ -27,20 +27,19 @@ import robot.Constants;
 import robot.Ports;
 import robot.Robot;
 
-public class shooter extends SubsystemBase {
-    // private final CANSparkMax motor = new CANSparkMax(Ports.Shooter.SHOOTER_ONE, MotorType.kBrushless);
-    private final ShooterIO hardware;
+@SuppressWarnings("unused")
+public class Hopper extends SubsystemBase {
+    private final HopperIO hardware;
 
-    public shooter(ShooterIO hardware) {
+    public Hopper(HopperIO hardware) {
         this.hardware = hardware;
     }
 
     public Command run() {
-        return run(() -> hardware.setVoltage(ShooterConstants.VOLTAGE));
-    }
-
+        return run(() -> hardware.setVoltage(HopperConstants.SPEED));
+    } 
+    
     public Command stop() {
         return run(() -> hardware.setVoltage(0));
     }
 }
-

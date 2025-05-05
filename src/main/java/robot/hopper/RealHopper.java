@@ -24,6 +24,5 @@ public class RealHopper implements HopperIO {
     @Override
     public double getVoltage() {
         return hopperTop.getBusVoltage();
-        
     }
 }

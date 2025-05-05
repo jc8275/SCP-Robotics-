@@ -27,6 +27,7 @@ import robot.Constants;
 import robot.Ports;
 import robot.Robot;
 
+@SuppressWarnings("unused")
 public class RollerIntake extends SubsystemBase {
     private final RollerIntakeIO hardware;
 
