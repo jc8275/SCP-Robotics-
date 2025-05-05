@@ -44,9 +44,8 @@ public class Shooter extends SubsystemBase {
         return run(() -> hardware.setVoltage(0));
     }
 
-    public void setShooterSpeed(double speed) {
-        // TODO method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setShooterSpeed'");
+    public Command setVoltage(double voltage) {
+        return run(() -> hardware.setVoltage(voltage));
     }
 }
 

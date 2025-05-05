@@ -22,7 +22,6 @@ public class RealShooter implements ShooterIO {
 
     @Override
     public double getVoltage() {
-        // TODO Method Stud
-        throw new UnsupportedOperationException("Unimplemented method 'getVoltage'");
+        return shooterMotor.getBusVoltage();
     }
 }

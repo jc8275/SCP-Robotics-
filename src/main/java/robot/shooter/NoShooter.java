@@ -13,7 +13,6 @@ public class NoShooter implements ShooterIO {
 
     @Override
     public double getVoltage() {
-        // TODO method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getVoltage'");
+        return 0;
     }
 }
