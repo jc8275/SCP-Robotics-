@@ -27,6 +27,8 @@ import robot.Constants;
 import robot.Ports;
 import robot.Robot;
 
+
+// this code doesnt specify whether the motors are intaking moving or pusing into shooter
 @SuppressWarnings("unused")
 public class Hopper extends SubsystemBase {
     private final HopperIO hardware;
@@ -35,11 +37,19 @@ public class Hopper extends SubsystemBase {
         this.hardware = hardware;
     }
 
-    public Command run() {
+    public Command runHopper() {
         return run(() -> hardware.setVoltage(HopperConstants.SPEED));
     } 
     
-    public Command stop() {
+    public Command stopHopper() {
         return run(() -> hardware.setVoltage(0));
+    }
+
+    public Command intake(){
+        return run(() -> hardware.setVoltage(HopperConstants.INTAKE_POWER));
+    }
+
+    public Command outtake() {
+        return run(() -> hardware.setVoltage(-HopperConstants.INTAKE_POWER));
     }
 }
