@@ -1,10 +1,17 @@
 package robot.drive;
 
+import static edu.wpi.first.units.Units.Meters;
+import static edu.wpi.first.units.Units.MetersPerSecond;
+
 import edu.wpi.first.math.Matrix;
 import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.numbers.N1;
 import edu.wpi.first.math.numbers.N7;
+import edu.wpi.first.units.Distance;
+import edu.wpi.first.units.Measure;
+import edu.wpi.first.units.Velocity;
 
+/**  */
 public class DriveConstants {
     // Track Width in meters
     public static final double TRACK_WIDTH = 0.7112; 
@@ -25,7 +32,7 @@ public class DriveConstants {
 
 
     // Maximum speed in meters per second
-    public static final double MAX_SPEED = 2; 
+    public static final double MAX_SPEED = 1; 
 
     // feedforward coeffcients (velocity -> voltage)
     public static final class FF {
@@ -39,4 +46,10 @@ public class DriveConstants {
         public static final double kI = 0.0;
         public static final double kD = 0.0;
     }
+
+    // Units(using wpilib measure classes)
+    // Javadocs(pls it looks nice)
+    // Constants(with some consturction guy)
+    // Sim drivetraint(fix your bindings jdioawjidjawiofjioaw)
+    // Autonomous code(make it move during autonomous and i'll give u 2 billion bobux)
 }

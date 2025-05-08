@@ -18,16 +18,20 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.simulation.DifferentialDrivetrainSim;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import monologue.Logged;
+import monologue.Annotations.Log;
 import robot.Constants;
 import robot.Ports;
 import robot.Robot;
 import robot.drive.DriveConstants.FF;
 import robot.drive.DriveConstants.PID;
 
-public class Drive extends SubsystemBase {
+/**KIdiuaiwhiawhifwa */
+public class Drive extends SubsystemBase implements Logged {
     private final CANSparkMax leftLeader = new CANSparkMax(Ports.Drive.LEFT_LEADER, MotorType.kBrushless);
     private final CANSparkMax leftFollower = new CANSparkMax(Ports.Drive.LEFT_FOLLOWER, MotorType.kBrushless);
 
@@ -41,6 +45,7 @@ public class Drive extends SubsystemBase {
 
     private final DifferentialDriveOdometry odometry;
 
+    /**idioawjiodjioawjfiojwiofjiawojfioawjf */
     private final SimpleMotorFeedforward feedforward = new SimpleMotorFeedforward(FF.kS, FF.kV);
 
     private final PIDController leftPIDController =
@@ -48,6 +53,7 @@ public class Drive extends SubsystemBase {
     private final PIDController rightPIDController =
       new PIDController(PID.kP, PID.kI, PID.kD);
 
+    @Log.NT
     private final DifferentialDrivetrainSim driveSim;
 
     public Drive() {
@@ -141,6 +147,7 @@ public class Drive extends SubsystemBase {
         rightEncoder.setPosition(driveSim.getRightPositionMeters());
     }
 
+    @Log.NT
     public Pose2d pose() {
         return odometry.getPoseMeters();
     }

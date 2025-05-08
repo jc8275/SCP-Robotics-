@@ -22,6 +22,7 @@ import lib.CommandRobot;
 import lib.FaultLogger;
 import monologue.Logged;
 import monologue.Monologue;
+import monologue.Annotations.Log;
 import robot.Ports.OI;
 import robot.drive.Drive;
 
@@ -40,6 +41,7 @@ public class Robot extends CommandRobot implements Logged {
   private final PowerDistribution pdh = new PowerDistribution();
 
   // SUBSYSTEMS
+  @Log.NT
   Drive drive = new Drive();
 
   // COMMANDS

@@ -14,7 +14,7 @@ public class ShooterSubsystemTester {
     // A simple method to test the shooter motor
     public void testShooterMotor(double speed) {
         // Set the motor speed to the specified value (positive for shooting, negative for reverse)
-        m_shooterSubsystem.setShooterSpeed(speed);
+        m_shooterSubsystem.setSpeed(speed);
 
         // Print or log the state for manual checking
         System.out.println("Shooter motor set to speed: " + speed);
@@ -23,7 +23,7 @@ public class ShooterSubsystemTester {
         Timer.delay(2);
 
         // Stop the shooter motor after testing
-        m_shooterSubsystem.setShooterSpeed(0);
+        m_shooterSubsystem.setSpeed(0);
         System.out.println("Shooter motor stopped.");
     }
 }
