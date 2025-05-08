@@ -43,9 +43,5 @@ public class Shooter extends SubsystemBase {
     public Command stop() {
         return run(() -> hardware.setVoltage(0));
     }
-
-    public Command setVoltage(double voltage) {
-        return run(() -> hardware.setVoltage(voltage));
-    }
 }
 
