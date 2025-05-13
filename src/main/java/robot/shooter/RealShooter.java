@@ -1,4 +1,3 @@
-
 package robot.shooter;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;

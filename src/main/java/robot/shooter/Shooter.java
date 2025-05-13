@@ -36,16 +36,12 @@ public class Shooter extends SubsystemBase {
         this.hardware = hardware;
     }
 
-    public Command run() {
+    public Command shoot() {
         return run(() -> hardware.setVoltage(ShooterConstants.VOLTAGE));
     }
 
-    public Command stop() {
+    public Command shootstop() {
         return run(() -> hardware.setVoltage(0));
-    }
-
-    public Command setSpeed(double speed) {
-        return run(() -> hardware.setVoltage(speed));
     }
 }
 

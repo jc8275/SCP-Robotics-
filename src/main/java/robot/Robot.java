@@ -25,87 +25,37 @@ import monologue.Monologue;
 import monologue.Annotations.Log;
 import robot.Ports.OI;
 import robot.drive.Drive;
+import robot.shooter.Shooter;
 
-/**
- * This class is where the bulk of the robot should be declared. Since Command-based is a
- * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
- * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
- * subsystems, commands, and trigger mappings) should be declared here.
- */
-@SuppressWarnings("unused")
-public class Robot extends CommandRobot implements Logged {
-  // INPUT DEVICES
-  private final CommandXboxController operator = new CommandXboxController(OI.OPERATOR);
-  private final CommandXboxController driver = new CommandXboxController(OI.DRIVER);
 
-  private final PowerDistribution pdh = new PowerDistribution();
+// Reference: https://github.com/AnkitKumar5250/SummerInstitute2024Team1/blob/main/src/main/java/frc/robot/Robot.java
+public class Robot extends CommandRobot {
+  private final Shooter shooter = new Shooter();
+  private final Drive drive = new Drive();
 
-  // SUBSYSTEMS
-  @Log.NT
-  Drive drive = new Drive();
+  private final CommandXboxController operator = newCommandXboxController(Ports.Operator.driverControllerPort);
+  private final Commands commands = new Commands(shooter, drive, operator);
 
-  // COMMANDS
+  public void robotPeriodic() {
+    // Updates the command sceduler
+    CommandScheduler.getInstance().run();
 
-  /** The robot contains subsystems, OI devices, and commands. */
-  public Robot() {
-    super(PERIOD.in(Seconds));
-    configureGameBehavior();
-    configureBindings();
-  }
-
-  /** Configures basic behavior for different periods during the game. */
-  private void configureGameBehavior() {
-    // TODO: Add configs for all additional libraries, components, intersubsystem interaction
-    // Configure logging with DataLogManager, Monologue, URCL, and FaultLogger
-    DataLogManager.start();
-    Monologue.setupMonologue(this, "/Robot", false, true);
-    addPeriodic(Monologue::updateAll, PERIOD.in(Seconds));
-    addPeriodic(FaultLogger::update, 2);
-
-    SmartDashboard.putData(CommandScheduler.getInstance());
-    // Log PDH
-    SmartDashboard.putData("PDH", pdh);
-    FaultLogger.register(pdh);
-
-    RobotController.setBrownoutVoltage(6.0);
-
-    if (isReal()) {
-      URCL.start();
-      pdh.clearStickyFaults();
-      pdh.setSwitchableChannel(true);
-    } else {
-      DriverStation.silenceJoystickConnectionWarning(true);
-    }
-  }
-
-  /** Configures trigger -> command bindings. */
-  private void configureBindings() {
-	  drive.setDefaultCommand(drive.drive(driver::getLeftY, driver::getRightY));
-  }
-
-  /**
-   * Command factory to make both controllers rumble.
-   *
-   * @param rumbleType The area of the controller to rumble.
-   * @param strength The intensity of the rumble.
-   * @return The command to rumble both controllers.
-   */
-  public Command rumble(RumbleType rumbleType, double strength) {
-    return Commands.runOnce(
-            () -> {
-              driver.getHID().setRumble(rumbleType, strength);
-              operator.getHID().setRumble(rumbleType, strength);
-            })
-        .andThen(Commands.waitSeconds(0.3))
-        .finallyDo(
-            () -> {
-              driver.getHID().setRumble(rumbleType, 0);
-              operator.getHID().setRumble(rumbleType, 0);
-            });
+    // TODO: We dont have a positioning system
+    // Updates the robot visualizer
+    field.setRobotPose(Positioning.robot);
   }
 
   @Override
-  public void close() {
-    super.close();
+  public void autonomousInit() {
+    // Runs the shoot command whenever the beambreak is triggered
+    commands.BeamBreak().onTrue(commands.shoot());
+    CommandScheduler.getInstance()
+      .schedule(commands.shoot()
+        .andThen(commands.score(BALL_ONE_POSITION)
+          .andThen(commands.score(BALL_TWO_POSITION))
+          .andThen(commands.score(BALL_THREE_POSITION)))
+        .andThen(run(() -> {
+          commands.moveTo(AUTO_SCORE_POS_1).andThen(commands.moveTo(AUTO_SCORE_POS_2));
+    })));
   }
 }
