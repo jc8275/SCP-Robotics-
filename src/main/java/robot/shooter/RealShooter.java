@@ -1,6 +1,6 @@
 package robot.shooter;
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.CANSparkLowLevel.MotorType;
 import robot.Ports;
 
 public class RealShooter implements ShooterIO {

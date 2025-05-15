@@ -120,7 +120,7 @@ public class Drive extends SubsystemBase implements Logged {
         driveSim.setInputs(leftVoltage, rightVoltage);
     }
 
-    public Command drive(DoubleSupplier vLeft, DoubleSupplier vRight){
+    public Command drivec(DoubleSupplier vLeft, DoubleSupplier vRight){
         return run(() -> drive(vLeft.getAsDouble(), vRight.getAsDouble()));
     }
 

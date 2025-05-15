@@ -3,6 +3,8 @@ package robot;
 import static edu.wpi.first.units.Units.Seconds;
 import static robot.Constants.PERIOD;
 
+import java.util.function.BooleanSupplier;
+
 import org.littletonrobotics.urcl.URCL;
 
 import edu.wpi.first.math.geometry.Pose2d;
@@ -25,37 +27,46 @@ import monologue.Monologue;
 import monologue.Annotations.Log;
 import robot.Ports.OI;
 import robot.drive.Drive;
+import robot.shooter.RealShooter;
 import robot.shooter.Shooter;
 
 
 // Reference: https://github.com/AnkitKumar5250/SummerInstitute2024Team1/blob/main/src/main/java/frc/robot/Robot.java
 public class Robot extends CommandRobot {
-  private final Shooter shooter = new Shooter();
+  private final Shooter shooter = new Shooter(new RealShooter());
   private final Drive drive = new Drive();
 
   private final CommandXboxController operator = newCommandXboxController(Ports.Operator.driverControllerPort);
-  private final Commands commands = new Commands(shooter, drive, operator);
 
   public void robotPeriodic() {
-    // Updates the command sceduler
     CommandScheduler.getInstance().run();
-
-    // TODO: We dont have a positioning system
-    // Updates the robot visualizer
-    field.setRobotPose(Positioning.robot);
   }
+
+  
 
   @Override
   public void autonomousInit() {
-    // Runs the shoot command whenever the beambreak is triggered
-    commands.BeamBreak().onTrue(commands.shoot());
     CommandScheduler.getInstance()
-      .schedule(commands.shoot()
-        .andThen(commands.score(BALL_ONE_POSITION)
-          .andThen(commands.score(BALL_TWO_POSITION))
-          .andThen(commands.score(BALL_THREE_POSITION)))
-        .andThen(run(() -> {
-          commands.moveTo(AUTO_SCORE_POS_1).andThen(commands.moveTo(AUTO_SCORE_POS_2));
-    })));
+      .schedule(shooter.shoot()); //TODO: drive.drivec(), how to get controller input, doublesuppliers.
+  }
+
+  @Override
+  public void teleopInit() {
+    // Cancels all autonomous commands at the beggining of telop
+    CommandScheduler.getInstance().cancelAll();
+
+    // Configures the controller bindings
+    commands.configureButtonBindings();
+  }
+
+  @Override
+  public void simulationInit() {
+    // Adds field visualizer to dashboard
+    SmartDashboard.putData("Field", field);
+  }
+
+  @Override
+  public void simulationPeriodic() {
+
   }
 }
