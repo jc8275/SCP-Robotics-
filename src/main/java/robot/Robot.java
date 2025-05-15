@@ -4,6 +4,7 @@ import static edu.wpi.first.units.Units.Seconds;
 import static robot.Constants.PERIOD;
 
 import java.util.function.BooleanSupplier;
+import java.util.function.DoubleSupplier;
 
 import org.littletonrobotics.urcl.URCL;
 
@@ -36,7 +37,7 @@ public class Robot extends CommandRobot {
   private final Shooter shooter = new Shooter(new RealShooter());
   private final Drive drive = new Drive();
 
-  private final CommandXboxController operator = newCommandXboxController(Ports.Operator.driverControllerPort);
+  private final CommandXboxController operator = new CommandXboxController(Ports.OI.OPERATOR);
 
   public void robotPeriodic() {
     CommandScheduler.getInstance().run();
@@ -47,22 +48,29 @@ public class Robot extends CommandRobot {
   @Override
   public void autonomousInit() {
     CommandScheduler.getInstance()
-      .schedule(shooter.shoot()); //TODO: drive.drivec(), how to get controller input, doublesuppliers.
+      .schedule(shooter.shoot(), drive.drivec(new DoubleSupplier() {
+        @Override
+        public double getAsDouble() {
+          return operator.getLeftX();
+        }
+      }, new DoubleSupplier() {
+        @Override
+        public double getAsDouble() {
+          return operator.getRightX();
+        }
+      })); 
   }
-
+  
   @Override
   public void teleopInit() {
     // Cancels all autonomous commands at the beggining of telop
     CommandScheduler.getInstance().cancelAll();
-
-    // Configures the controller bindings
-    commands.configureButtonBindings();
   }
 
   @Override
   public void simulationInit() {
     // Adds field visualizer to dashboard
-    SmartDashboard.putData("Field", field);
+    
   }
 
   @Override

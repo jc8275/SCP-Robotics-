@@ -1,4 +1,4 @@
-package robot.index;
+package robot.Index;
 
 public class IndexConstants {
     public static final double INDEXER_MAX_SPEED = 0.5; // Maximum speed for the indexer motors

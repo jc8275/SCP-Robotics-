@@ -1,4 +1,4 @@
-package robot.index;
+package robot.Index;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
@@ -31,7 +31,7 @@ public class Index extends SubsystemBase {
     private final CANSparkMax indexMotor;
 
     public Index() {
-        indexMotor = new CANSparkMax(Ports.INDEX_MOTOR, MotorType.kBrushless);
+        indexMotor = new CANSparkMax(Ports.Intake.INTAKE_MOTOR, MotorType.kBrushless);
         indexMotor.restoreFactoryDefaults();
         indexMotor.setIdleMode(CANSparkMax.IdleMode.kBrake);
         indexMotor.setSmartCurrentLimit(30);
