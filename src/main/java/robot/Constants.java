@@ -5,7 +5,6 @@ import static edu.wpi.first.units.Units.*;
 import edu.wpi.first.units.Measure;
 import edu.wpi.first.units.Time;
 
-
 public class Constants {
   public static final double WHEEL_RADIUS = 0.05;
   public static final double WHEEL_BASE = 0.15;

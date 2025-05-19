@@ -4,7 +4,8 @@
 //     private double voltage =0;
 //     private double power = 0;
 //     private double speedCurrent =0;
-// //Ok so i'm guessing this "simShooter" is tryna simulate values? So we would want it to say all the values to make sure we have them all
+// //Ok so i'm guessing this "simShooter" is tryna simulate values? So we would want it to say all
+// the values to make sure we have them all
 // //getting simulated values for speed
 //     @Override
 //     public void setSpeed(double speed) {
@@ -15,7 +16,7 @@
 //     public double getSpeed(){
 //         return speedCurrent;
 //     }
-//     @Override 
+//     @Override
 //     public void stopShooter(){
 //         speedCurrent = ShooterConstants.SPEED_MIN;
 //     System.out.println("the shooter stopped");
@@ -27,7 +28,7 @@
 //     System.out.println("this is the voltage "+voltage);
 //     }
 //     @Override
-    
+
 //     public double getVoltage(){
 //         return voltage;
 // }

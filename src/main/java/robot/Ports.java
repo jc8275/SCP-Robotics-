@@ -8,8 +8,7 @@ public final class Ports {
   }
 
   public static final class Intake {
-    public static final int INTAKE_MOTOR = 2; //This is for intake
-
+    public static final int INTAKE_MOTOR = 2; // This is for intake
   }
 
   public static final class Drive {
@@ -21,7 +20,7 @@ public final class Ports {
   }
 
   public static final class Shooter {
-    public static final int SHOOTER_ONE = 8; // replace with the id for the robot later 
+    public static final int SHOOTER_ONE = 8; // replace with the id for the robot later
   }
 
   public static final class Hopper {
@@ -29,6 +28,3 @@ public final class Ports {
     public static final int HOPPER_BOTTOM = 10;
   }
 }
-
-
-

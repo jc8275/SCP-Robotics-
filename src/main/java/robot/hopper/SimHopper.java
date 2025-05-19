@@ -1,5 +1,3 @@
 package robot.hopper;
 
-public class SimHopper {
-    
-}
+public class SimHopper {}
