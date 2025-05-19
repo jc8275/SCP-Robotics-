@@ -17,7 +17,6 @@ public final class Ports {
     public static final int RIGHT_FOLLOWER = 4;
     public static final int LEFT_LEADER = 5;
     public static final int LEFT_FOLLOWER = 6;
-
     public static final int GYRO_CHANNEL = 7;
   }
 

@@ -29,6 +29,7 @@ import robot.Ports;
 import robot.Robot;
 import robot.drive.DriveConstants.FF;
 import robot.drive.DriveConstants.PID;
+import robot.drive.GyroIO;
 
 /**KIdiuaiwhiawhifwa */
 public class Drive extends SubsystemBase implements Logged {
@@ -41,7 +42,7 @@ public class Drive extends SubsystemBase implements Logged {
     private final RelativeEncoder leftEncoder = leftLeader.getEncoder();
     private final RelativeEncoder rightEncoder = rightLeader.getEncoder();
 
-    private final AnalogGyro gyro = new AnalogGyro(Ports.Drive.GYRO_CHANNEL);
+    private final GyroIO gyro = new GyroIO.NoGyro();//new AnalogGyro(Ports.Drive.GYRO_CHANNEL);
 
     private final DifferentialDriveOdometry odometry;
 
