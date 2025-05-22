@@ -3,6 +3,7 @@ package robot;
 import edu.wpi.first.wpilibj.DataLogManager;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 import static edu.wpi.first.units.Units.Second;
 
@@ -23,6 +24,11 @@ public class Robot extends CommandRobot implements Logged {
   @Log.NT private final Drive drive = new Drive();
 
   private final CommandXboxController operator = new CommandXboxController(Ports.OI.OPERATOR);
+  private final CommandXboxController driver = new CommandXboxController(Ports.OI.DRIVER);
+
+  public void bindKeybinds() {
+   // Trigger leftStickDrive = operator.rightStick().onTrue(null);
+  }
 
   public void robotPeriodic() {
     CommandScheduler.getInstance().run();
@@ -30,6 +36,7 @@ public class Robot extends CommandRobot implements Logged {
 
   @Override
   public void autonomousInit() {
+    System.out.println("auto init");
     CommandScheduler.getInstance()
         .schedule(
             shooter.shoot(),
@@ -37,13 +44,13 @@ public class Robot extends CommandRobot implements Logged {
                 new DoubleSupplier() {
                   @Override
                   public double getAsDouble() {
-                    return operator.getLeftX();
+                    return driver.getLeftX();
                   }
                 },
                 new DoubleSupplier() {
                   @Override
                   public double getAsDouble() {
-                    return operator.getRightX();
+                    return driver.getRightX();
                   }
                 }));
   }
@@ -57,7 +64,7 @@ public class Robot extends CommandRobot implements Logged {
   @Override
   public void simulationInit() {
     // Adds field visualizer to dashboard
-        DataLogManager.start();
+    DataLogManager.start();
     Monologue.setupMonologue(this, "/Robot", false, true);
     addPeriodic(Monologue::updateAll, Constants.PERIOD.in(Second));
     addPeriodic(FaultLogger::update, 2);

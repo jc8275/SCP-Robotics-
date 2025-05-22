@@ -20,6 +20,7 @@ import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.simulation.DifferentialDrivetrainSim;
+import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import monologue.Logged;
@@ -55,6 +56,7 @@ public class Drive extends SubsystemBase implements Logged {
 
     @Log.NT
     private final DifferentialDrivetrainSim driveSim;
+    private final Field2d field2d = new Field2d();
 
     public Drive() {
         for (CANSparkMax spark : List.of(leftLeader, leftFollower, rightLeader, rightFollower)) {
@@ -142,6 +144,7 @@ public class Drive extends SubsystemBase implements Logged {
     @Override
     public void simulationPeriodic() {
         // sim.update() tells the simulation how much time has passed
+        field2d.setRobotPose(pose());
         driveSim.update(Constants.PERIOD.in(Second));
         leftEncoder.setPosition(driveSim.getLeftPositionMeters());
         rightEncoder.setPosition(driveSim.getRightPositionMeters());
