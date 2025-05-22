@@ -104,9 +104,13 @@ public class Drive extends SubsystemBase implements Logged {
 
         final double realLeftSpeed = leftSpeed * DriveConstants.MAX_SPEED;
         final double realRightSpeed = rightSpeed * DriveConstants.MAX_SPEED;
+
+        System.out.println("RLS: " + realLeftSpeed + " RRS: " + realRightSpeed);
         
         final double leftFeedforward = feedforward.calculate(realLeftSpeed);
         final double rightFeedforward = feedforward.calculate(realRightSpeed);
+
+        System.out.println("LFF: " + realLeftSpeed + " RFF: " + realRightSpeed);
     
         final double leftPID = 
         leftPIDController.calculate(leftEncoder.getVelocity(), realLeftSpeed);
@@ -115,6 +119,8 @@ public class Drive extends SubsystemBase implements Logged {
 
         double leftVoltage = leftPID + leftFeedforward;
         double rightVoltage = rightPID + rightFeedforward;
+
+        System.out.println("LPID: " + leftPID + " RPID: " + rightPID);
   
         leftLeader.setVoltage(leftVoltage);
         rightLeader.setVoltage(rightVoltage);

@@ -50,7 +50,7 @@ public class Robot extends CommandRobot implements Logged {
                 new DoubleSupplier() {
                   @Override
                   public double getAsDouble() {
-                    return driver.getRightX();
+                    return driver.getLeftY();
                   }
                 }));
   }
