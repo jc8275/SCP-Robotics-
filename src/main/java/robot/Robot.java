@@ -44,13 +44,13 @@ public class Robot extends CommandRobot implements Logged {
                 new DoubleSupplier() {
                   @Override
                   public double getAsDouble() {
-                    return driver.getLeftX();
+                    return driver.getLeftY(); 
                   }
                 },
                 new DoubleSupplier() {
                   @Override
                   public double getAsDouble() {
-                    return driver.getLeftY();
+                    return driver.getRightX(); 
                   }
                 }));
   }

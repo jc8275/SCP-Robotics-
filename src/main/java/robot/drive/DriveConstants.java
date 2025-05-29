@@ -20,6 +20,8 @@ public class DriveConstants {
 
   public static final double PERIOD = 0.2;
 
+  public static final double TURNING_FACTOR = 0.3;
+
   // Drive Mass in Kg
   public static final double DRIVE_MASS = 60.0;
   public static final Matrix<N7, N1> STD_DEVS = VecBuilder.fill(0, 0, 0, 0, 0, 0, 0);

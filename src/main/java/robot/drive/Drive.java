@@ -11,6 +11,7 @@ import java.util.function.DoubleSupplier;
 import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
+import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.geometry.Pose2d;
@@ -30,6 +31,8 @@ import robot.Ports;
 import robot.Robot;
 import robot.drive.DriveConstants.FF;
 import robot.drive.DriveConstants.PID;
+
+import static robot.drive.DriveConstants.TURNING_FACTOR;
 
 /**KIdiuaiwhiawhifwa */
 public class Drive extends SubsystemBase implements Logged {
@@ -97,36 +100,41 @@ public class Drive extends SubsystemBase implements Logged {
             DriveConstants.TRACK_WIDTH,
             DriveConstants.STD_DEVS);
     }
+    private void drive(double leftY, double rightX) {
+        leftY = leftY * -1;
+        if (leftY < 0.1 && leftY > -0.1){
+            leftY = 0.0;
+        }
+        if (rightX < 0.1 && rightX > -0.1){
+            rightX = 0.0;
+        }
 
-    private void drive(double leftSpeed, double rightSpeed) {
-        leftLeader.set(leftSpeed);
-        rightLeader.set(rightSpeed);
+        double leftSpeed = leftY + (rightX * TURNING_FACTOR);
+        double rightSpeed = leftY - (rightX * TURNING_FACTOR);
+
+        leftSpeed = MathUtil.clamp(leftSpeed, -1.0, 1.0);
+        rightSpeed = MathUtil.clamp(rightSpeed, -1.0, 1.0);
 
         final double realLeftSpeed = leftSpeed * DriveConstants.MAX_SPEED;
         final double realRightSpeed = rightSpeed * DriveConstants.MAX_SPEED;
 
-        System.out.println("RLS: " + realLeftSpeed + " RRS: " + realRightSpeed);
-        
         final double leftFeedforward = feedforward.calculate(realLeftSpeed);
         final double rightFeedforward = feedforward.calculate(realRightSpeed);
 
-        System.out.println("LFF: " + realLeftSpeed + " RFF: " + realRightSpeed);
-    
         final double leftPID = 
-        leftPIDController.calculate(leftEncoder.getVelocity(), realLeftSpeed);
+            leftPIDController.calculate(leftEncoder.getVelocity(), realLeftSpeed);
         final double rightPID = 
-        rightPIDController.calculate(rightEncoder.getVelocity(), realRightSpeed);
+            rightPIDController.calculate(rightEncoder.getVelocity(), realRightSpeed);
 
         double leftVoltage = leftPID + leftFeedforward;
         double rightVoltage = rightPID + rightFeedforward;
 
-        System.out.println("LPID: " + leftPID + " RPID: " + rightPID);
-  
         leftLeader.setVoltage(leftVoltage);
         rightLeader.setVoltage(rightVoltage);
 
         driveSim.setInputs(leftVoltage, rightVoltage);
     }
+
 
     public Command drivec(DoubleSupplier vLeft, DoubleSupplier vRight){
         return run(() -> drive(vLeft.getAsDouble(), vRight.getAsDouble()));
